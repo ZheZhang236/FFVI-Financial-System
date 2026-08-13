@@ -1,0 +1,28 @@
+INPUT_VARIABLES = {
+    "year": {"name": "填写年份", "type": "integer", "min": 1900, "max": 2100},
+    "food": {"name": "月均伙食费", "unit": "元/月"},
+    "alcohol": {"name": "月均酒水花费", "unit": "元/月"},
+    "housing": {"name": "月均水/电/燃料/物管费用", "unit": "元/月"},
+    "daily": {"name": "月均日用品花费", "unit": "元/月"},
+    "service": {"name": "月均家政服务费", "unit": "元/月"},
+    "transport": {"name": "月均本地交通费", "unit": "元/月"},
+    "communication": {"name": "月均通信网络费", "unit": "元/月"},
+    "entertainment": {"name": "月均文化娱乐费", "unit": "元/月"},
+    "clothing": {"name": "月均衣物支出", "unit": "元/月"},
+    "repair": {"name": "住房修缮花费", "unit": "元/月"},
+    "education": {"name": "教育培训费用", "unit": "元/月"},
+    "travel": {"name": "旅游花费", "unit": "元/月"},
+    "medical": {"name": "医疗费用", "unit": "元/月"},
+    "cash": {"name": "活期账户余额", "unit": "元"},
+    "stock_total": {"name": "股票资产", "unit": "元"},
+    "fund_total": {"name": "基金资产", "unit": "元"},
+    "bond_total": {"name": "债券资产", "unit": "元"},
+    "debt_total": {"name": "负债总额", "unit": "元"},
+    "house_asset": {"name": "房产资产", "unit": "元"},
+    "num_labor": {"name": "家庭劳动力人数", "unit": "人"},
+    "num_child": {"name": "儿童人数", "unit": "人"},
+    "num_elder": {"name": "老人数量", "unit": "人"},
+    "num_medicare": {"name": "医保人数", "unit": "人"},
+}
+FFVI_INDICATORS = ["liquid_month", "debt_asset_ratio", "dep_ratio", "insure_rate"]
+FACTOR_VARIABLES = ["risk_liquid", "std_debt_asset_ratio", "std_dep_ratio", "risk_insure"]
