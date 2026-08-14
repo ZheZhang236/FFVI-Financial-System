@@ -1,0 +1,11 @@
+{
+  "year": 2017,
+  "sample_size":33410 ,
+  "source":"CHFS2017" ,
+  "variables": [
+    "liquid_month",
+    "debt_asset_ratio",
+    "dep_ratio",
+    "insure_rate"],
+  "created_time": "2026-08-14"
+}
