@@ -52,8 +52,7 @@ def check_demo_password():
     st.write("请输入访问密码后进入系统。")
 
     password = st.text_input(
-        type="password",
-        placeholder="请输入演示密码")
+        type="password")
 
     if st.button("进入系统",use_container_width=True):
 
