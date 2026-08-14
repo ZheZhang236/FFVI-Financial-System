@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # FFVI_Financial_System
 
 基于年度Stata FFVI模型的家庭财务健康诊断系统。
@@ -81,7 +80,3 @@ data/yearly_model/2017/
 - 系统仍然生成流动性、消费结构和心理账户建议；
 - 不借用其他年份模型计算正式FFVI或风险等级；
 - 未来样本积累后，可为该年份生成独立模型目录，再正常启用FFVI与风险等级。
-=======
-# FFVI-Financial-System
-基于年度Stata FFVI模型的家庭财务健康诊断系统。
->>>>>>> 3d6a13153f5294d0e4d4983c962c2d4eaa6c8195
