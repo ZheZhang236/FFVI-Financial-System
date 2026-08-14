@@ -33,12 +33,25 @@ def check_demo_password():
         layout="wide")
 
     st.title("🏠 家庭财务健康诊断系统")
-    st.subheader("演示系统访问验证")
+    st.info(
+        """
+        感谢您的信任与参与。
+    
+        您填写的信息仅用于本次家庭财务健康分析，
+        不会用于商业用途，也不会向第三方提供。
+    
+        为持续优化家庭财务健康评估模型，
+        系统会保存您填写的数据至用户数据数据库，
+        用于未来模型更新和模型准确性提升。
+    
+        您的信息仅用于模型研究与计算分析。
+        """
+    )
+    st.subheader("系统访问验证")
 
     st.write("请输入访问密码后进入系统。")
 
     password = st.text_input(
-        "访问密码",
         type="password",
         placeholder="请输入演示密码")
 
@@ -71,20 +84,6 @@ if not check_demo_password():
 # =========================================================
 
 st.set_page_config(page_title="家庭财务健康诊断系统", page_icon="🏠", layout="wide")
-st.info(
-"""
-感谢您的信任与参与。
-
-您填写的信息仅用于本次家庭财务健康分析，
-不会用于商业用途，也不会向第三方提供。
-
-为持续优化家庭财务健康评估模型，
-系统会保存您填写的数据至用户数据数据库，
-用于未来模型更新和模型准确性提升。
-
-您的信息仅用于模型研究与计算分析。
-"""
-)
 
 st.markdown("""
 <style>
@@ -120,13 +119,10 @@ st.info("""
 系统优先使用用户填写年份对应模型。
 若该年份尚未形成稳定模型，
 系统将自动调用距离最近年份模型进行分析。
-
-您的输入数据仍会保存至对应年份数据库，
-用于未来模型更新。
 """)
 
 # Family ID / year are tied together.
-year = st.number_input("填写年份", min_value=1900, max_value=2100, value=None, step=1, format="%d")
+year = st.number_input("填写年份", min_value=1900, max_value=2200, value=None, step=1, format="%d")
 if year is not None:
     hhid = generate_hhid(int(year), USER_HISTORY_FILE)
 else:
