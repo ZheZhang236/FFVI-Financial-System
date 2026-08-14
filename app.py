@@ -49,9 +49,7 @@ def check_demo_password():
     )
     st.subheader("系统访问验证")
 
-    st.write("请输入访问密码后进入系统。")
-
-    password = st.text_input(
+    password = st.text_input("请输入访问密码",
         type="password")
 
     if st.button("进入系统",use_container_width=True):
