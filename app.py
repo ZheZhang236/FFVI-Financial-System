@@ -207,7 +207,9 @@ if submit:
         data["hhid"] = generate_hhid(int(year), USER_HISTORY_FILE)
 
         indicators = calculate_indicators(data)
-        data_for_analysis = {**data, **indicators}
+        month_cost = (food + alcohol + housing + daily + service + transport + communication +
+                entertainment + clothing + repair + education + travel + medical)
+        data_for_analysis = {**data, **indicators, "month_cost": month_cost}
         liquidity = analyze_liquidity(data_for_analysis)
         consumption = analyze_consumption_structure(data_for_analysis)
         psychology = analyze_psychological_accounts(data_for_analysis)
@@ -233,6 +235,7 @@ if submit:
         else:
             record.update({"FFVI_raw": None, "FFVI": None})
         record["risk_level"] = risk.get("level")
+        record.update(ffvi_result["indicators"])
         if ffvi_result is not None:
             record["model_year_used"] = ffvi_result["model_year"]
             record["is_reference_model"] = (int(year) != int(ffvi_result["model_year"]))
