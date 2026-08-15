@@ -5,9 +5,9 @@
 "std_dep_ratio",
 "risk_insure"
 ],
-  "factor1_score_coefficients": [0.07919, -0.08181, 0.64191 , 0.63502],
-  "factor2_score_coefficients": [0.69476 , 0.67655, 0.05201, -0.04981],
+  "factor1_score_coefficients": [ 0.07591, -0.07830 ,  0.64241 ,  0.63574],
+  "factor2_score_coefficients": [0.70253  , 0.67665, 0.05124, -0.04638 ],
 
-    "weight_factor1":0.3018 ,
-    "weight_factor2":0.2644
+    "weight_factor1":0.3017 ,
+    "weight_factor2":0.2615
   }

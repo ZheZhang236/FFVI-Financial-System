@@ -63,12 +63,25 @@ class FFVIModel:
 
     def calculate(self, data: Mapping[str, Any]) -> dict[str, Any]:
         indicators = calculate_indicators(data)
+        model_values = {
+            "liquid_month": min(
+                indicators["liquid_month"],
+                120
+            ),
+            "debt_asset_ratio": indicators["debt_asset_ratio"],
+            "dep_ratio": indicators["dep_ratio"],
+            "insure_rate": indicators["insure_rate"]
+        }
 
         if indicators is None:
             raise ValueError("calculate_indicators没有返回指标，请检查core/data_processor.py")
         standardized = {}
         for var in ["liquid_month","debt_asset_ratio","dep_ratio","insure_rate"]:
-            value = indicators[var]
+            value =model_values[var]
+            if var == "liquid_month":
+                    value_for_model = min(value, 120)
+            else:
+                    value_for_model = value= value
             param = self.scaler[var]
             if value is None:
                 if var == "dep_ratio":
@@ -106,4 +119,4 @@ class FFVIModel:
             raise ValueError("FFVI原始分数范围无效。")
         ffvi = (ffvi_raw - raw_min) / (raw_max - raw_min) * 100
         indicators.update(factor_inputs)
-        return {"input_year": self.input_year, "model_year":self.model_year,"indicators": indicators, "factor_inputs": factor_inputs, "factor1": factor1, "factor2": factor2, "FFVI_raw": ffvi_raw, "FFVI": round(max(0,min(100,ffvi)),2)}
+        return {"input_year": self.input_year, "model_year":self.model_year,"indicators": indicators, "model_values":model_values,"factor_inputs": factor_inputs, "factor1": factor1, "factor2": factor2, "FFVI_raw": ffvi_raw, "FFVI": round(max(0,min(100,ffvi)),2)}

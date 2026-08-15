@@ -1,8 +1,7 @@
 {
   "year": 2017,
   "sample_size":33410 ,
-  "source":"CHFS2017" ,
- "ffvi_raw_min":  -6.180169,
-  "ffvi_raw_max": 5.137485,
-  "created_time": "2026-08-14"
+ "ffvi_raw_min": -4.870666 ,
+  "ffvi_raw_max": 5.135612,
+  "created_time": "2026-08-15"
 }

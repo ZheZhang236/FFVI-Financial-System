@@ -1,10 +1,10 @@
 {
   "liquid_month": {
-    "mean": 2.057848  ,
-    "std":6.980032
+    "mean": 2.529487  ,
+    "std":10.19466
   },
   "debt_asset_ratio": {
-    "mean": 0.0341846 ,
+    "mean": 0.0341846  ,
     "std": 0.147174
   },
   "dep_ratio": {

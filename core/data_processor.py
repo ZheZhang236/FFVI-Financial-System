@@ -13,7 +13,7 @@ def calculate_liquid_month(data: Mapping[str, Any]) -> float:
     if month_cost <= 0:
         raise ValueError("月均总消费必须大于0。")
     value = calculate_liquid_assets(data) / month_cost
-    if value < 0 or value > MAX_LIQUID_MONTH:
+    if value < 0:
         raise ValueError(f"流动月数为 {value:.2f}，超出当前模型适用范围0-{MAX_LIQUID_MONTH:.0f}个月。")
     return value
 
@@ -42,4 +42,15 @@ def calculate_indicators(data: Mapping[str, Any]) -> dict[str, float | None]:
         "debt_asset_ratio": calculate_debt_asset_ratio(data),
         "dep_ratio": calculate_dep_ratio(data),
         "insure_rate": calculate_insure_rate(data)}
+
+def calculate_model_values(indicators):
+    return {
+        "liquid_month_model": min(
+            indicators["liquid_month"],
+            120
+        ),
+        "debt_asset_ratio_model": indicators["debt_asset_ratio"],
+        "dep_ratio_model": indicators["dep_ratio"],
+        "insure_rate_model": indicators["insure_rate"]
+    }
 
