@@ -76,6 +76,6 @@ def build_pdf_report(report: dict, output_path: Path | None = None) -> Path:
     for name, item in psy.items():
         story.append(Paragraph(f"{name}：{item['description']}", body))
     story.append(Paragraph("八、说明", h1))
-    story.append(Paragraph("本系统以用户输入的家庭财务结构和对应年份模型为基础。若输入年份尚未建立年度模型，系统不会用其他年份模型替代正式年度模型；此时仅进行指标、流动性、消费结构和心理账户分析，并提示等待该年份模型更新。", body))
+    story.append(Paragraph("本系统以用户输入的家庭财务结构和对应年份模型为基础。若输入年份尚未建立年度模型，系统会用距离最近年份模型替代该年度模型；用户可以等待该年份模型更新。", body))
     doc.build(story)
     return output_path
