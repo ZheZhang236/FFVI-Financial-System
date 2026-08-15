@@ -1,18 +1,18 @@
 {
   "liquid_month": {
     "mean": 2.057848  ,
-    "sd":6.980032
+    "std":6.980032
   },
-  "debt_asset_radio": {
+  "debt_asset_ratio": {
     "mean": 0.0341846 ,
-    "sd": 0.147174
+    "std": 0.147174
   },
   "dep_ratio": {
     "mean":0.5754092 ,
-    "sd": 0.593162
+    "std": 0.593162
   },
   "insure_rate":{
     "mean": 0.9869308 ,
-    "sd":0.0625647
+    "std":0.0625647
   }
 }

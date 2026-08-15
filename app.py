@@ -215,12 +215,14 @@ if submit:
         psychology = analyze_psychological_accounts(data_for_analysis)
 
         # Strict annual separation: no cross-year model borrowing.
-        model_dir = Path(__file__).resolve().parent / "data" / "yearly_model" / str(int(year))
         ffvi_result = None
-        if model_dir.exists():
+        try:
             model = FFVIModel(int(year))
             ffvi_result = model.calculate(data_for_analysis)
 
+        except Exception as e:
+            st.error(f"FFVI模型计算失败：{e}")
+            ffvi_result = None
         if ffvi_result is not None:
             risk = assess_risk(int(year), ffvi_result["FFVI"])
         else:
@@ -229,13 +231,24 @@ if submit:
         recommendation = generate_recommendations(risk, liquidity, consumption, psychology, indicators)
 
         record = dict(data)
-        record.update(indicators)
+
+        if ffvi_result:
+            record.update(ffvi_result["indicators"])
+        else:
+            record.update(indicators)
         if ffvi_result is not None:
             record.update({"FFVI_raw": ffvi_result["FFVI_raw"], "FFVI": ffvi_result["FFVI"]})
         else:
             record.update({"FFVI_raw": None, "FFVI": None})
         record["risk_level"] = risk.get("level")
-        record.update(ffvi_result["indicators"])
+        if ffvi_result is not None:
+            record.update(ffvi_result["indicators"])
+        else:
+            record.update({
+                "risk_liquid": None,
+                "std_debt_asset_ratio": None,
+                "std_dep_ratio": None,
+                "risk_insure": None })
         if ffvi_result is not None:
             record["model_year_used"] = ffvi_result["model_year"]
             record["is_reference_model"] = (int(year) != int(ffvi_result["model_year"]))
@@ -261,8 +274,10 @@ if submit:
         st.session_state["latest_report"] = report
         st.success("本次数据已保存。")
 
+
     except Exception as exc:
-        st.error(f"无法完成诊断：{exc}")
+        import traceback
+        st.error(traceback.format_exc())
 
 
 if "latest_report" in st.session_state:

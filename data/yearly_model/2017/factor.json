@@ -1,19 +1,13 @@
 {
-  "year": 2017,
-  "factor1_loading": {
-    "risk_liquid":0.0943 ,
-    "std_debt_asset_radio":-0.1000,
-    "std_dep_ratio":0.7749 ,
-    "risk_insure":0.7668
-  },
-  "factor2_loading": {
-    "risk_liquid":0.7346 ,
-    "std_debt_asset_radio":0.7156,
-    "std_dep_ratio":0.0538 ,
-    "risk_insure":-0.0538
-  },
-  "weight": {
-    "factor1":0.3018 ,
-    "factor2":0.2644
+ "variables":[
+"risk_liquid",
+"std_debt_asset_ratio",
+"std_dep_ratio",
+"risk_insure"
+],
+  "factor1_score_coefficients": [0.07919, -0.08181, 0.64191 , 0.63502],
+  "factor2_score_coefficients": [0.69476 , 0.67655, 0.05201, -0.04981],
+
+    "weight_factor1":0.3018 ,
+    "weight_factor2":0.2644
   }
-}

@@ -63,6 +63,9 @@ class FFVIModel:
 
     def calculate(self, data: Mapping[str, Any]) -> dict[str, Any]:
         indicators = calculate_indicators(data)
+
+        if indicators is None:
+            raise ValueError("calculate_indicators没有返回指标，请检查core/data_processor.py")
         standardized = {}
         for var in ["liquid_month","debt_asset_ratio","dep_ratio","insure_rate"]:
             value = indicators[var]

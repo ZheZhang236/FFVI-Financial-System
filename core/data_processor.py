@@ -39,11 +39,7 @@ def calculate_insure_rate(data: Mapping[str, Any]) -> float:
 def calculate_indicators(data: Mapping[str, Any]) -> dict[str, float | None]:
     return {
         "liquid_month": calculate_liquid_month(data),
-
         "debt_asset_ratio": calculate_debt_asset_ratio(data),
-
         "dep_ratio": calculate_dep_ratio(data),
-
-        "insure_rate": calculate_insure_rate(data)
-    }
+        "insure_rate": calculate_insure_rate(data)}
 
