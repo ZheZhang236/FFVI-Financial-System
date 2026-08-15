@@ -5,7 +5,9 @@ def analyze_liquidity(data: Mapping[str, float]) -> dict:
     l2_asset = float(data["stock_total"]) + float(data["fund_total"]) + float(data["bond_total"])
     house_asset = float(data["house_asset"])
     month_cost = float(data["month_cost"])
-    real_liquid_total = float(data["real_liquid_total"])
+    cash = data.get("cash", 0)
+    stock_fund_bond = ( data.get("stock_total", 0) + data.get("fund_total", 0) + data.get("bond_total", 0))
+    real_liquid_total = cash + stock_fund_bond * 0.7
     l1_months = cash / month_cost if month_cost > 0 else 0.0
     l2_share = l2_asset / real_liquid_total if real_liquid_total > 0 else 0.0
     l1_l2_asset = cash + 0.7 * l2_asset
